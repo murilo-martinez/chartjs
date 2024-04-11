@@ -1,11 +1,93 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="img/chartjs-logo.svg" type="image/x-icon">
+    <title>Implementando o ChartJS</title>
+  </head>
+  <body>
+    <h1>Implementando o ChartJS</h1>
+
+    <div class="container">
+      <div>
+        <canvas
+          id="myChart"
+          style="position: relative; height: 40vh; width: 40vw"
+        ></canvas>
+      </div>
+      <div>
+        <canvas
+          id="myChart2"
+          style="position: relative; height: 40vh; width: 40vw"
+        ></canvas>
+      </div>
+    </div>
+
+	<div class="footer">
+		<div class="container">
+			<p>Feito por Murilo Martinez - 1CCO - SPTECH &copy;</p>
+		</div>
+	</div>
+  </body>
 </html>
+
+<script>
+  const ctx = document.getElementById("myChart");
+  const ctx2 = document.getElementById("myChart2");
+
+  new Chart(ctx, {
+    type: "line",
+    data: {
+      labels: ["12:00", "13:00", "14:00", "15:00", "16:00", "17:00"],
+      datasets: [
+        {
+          label: "Temperatura",
+          data: [20 + 10, 30 - 1, 40 - 12, 50 - 25, 60 - 38, 70 - 47, 90],
+          borderWidth: 2,
+          borderColor: "#FF007F",
+        },
+        {
+          label: "Umidade",
+          data: [20 + 60, 30 + 52, 40 + 40, 50 + 35, 60 + 20, 70 + 13, 90],
+          borderWidth: 2,
+          borderColor: "#054F77",
+        },
+      ],
+    },
+  });
+
+  new Chart(ctx2, {
+    type: "bar",
+    data: {
+      labels: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho"],
+      datasets: [
+        {
+          label: "Temperatura Média",
+          data: [0 + 22, 10 + 14, 20 + 7, 30 - 7, 40 - 20, 50 - 32],
+          borderWidth: 2,
+          borderColor: "#FF007F",
+        },
+        {
+          label: "Umidade Média",
+          data: [0 + 90, 10 + 79, 20 + 73, 30 + 57, 40 + 48, 50 + 32],
+          borderWidth: 2,
+          borderColor: "#054F77",
+        },
+      ],
+    },
+  });
+
+  const config = {
+    type: "bar",
+    data: data,
+    options: {},
+  };
+</script>
+
+<script>
+  const myChart = new Chart(document.getElementById("myChart"), config);
+  const myChart2 = new Chart(document.getElementById("myChart2"), config2);
+</script>
